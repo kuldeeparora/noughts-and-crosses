@@ -2,7 +2,10 @@
 <html xmlns:ng="http://angularjs.org" id="ng-app" ng-app="ox">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,minimum-scale=1">
+    <meta name="description" content="Noughts & Crosses">
+    <meta name="author" content="Kuldeep Arora">
+    <title>Noughts & Crosses</title>
 
     {% block css %}
         <link rel="stylesheet" href="{{ asset('/build/css/main.css') }}">
@@ -11,7 +14,27 @@
     <script src="{{ asset('/build/js/main_libs.js') }}"></script>
 
 </head>
-<body>
+<body ng-controller="mainCtrl" >
+    <ul class="first-row">
+        <li><span class="noughts"></span></li>
+        <li><span class="cross"></span></li>
+        <li>3a</li>
+    </ul>
+
+    <ul class="second-row">
+        <li>1b</li>
+        <li>2b</li>
+        <li>3b</li>
+    </ul>
+
+    <ul class="third-row">
+        <li>1c</li>
+        <li>2c</li>
+        <li>3c</li>
+    </ul>
 
 </body>
+
+<script src="/build/js/main_app.js"></script>
+
 </html>

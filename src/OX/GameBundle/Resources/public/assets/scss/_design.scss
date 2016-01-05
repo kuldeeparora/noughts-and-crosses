@@ -1,0 +1,27 @@
+.first-row, .second-row, .third-row {
+    clear: both;
+}
+
+.first-row li, .second-row li, .third-row li {
+    float: left;
+    list-style: none;
+    padding: 2px;
+    border: 1px solid #ccc;
+    width: 80px;
+    height: 80px;
+    padding: 10px;
+}
+
+.noughts {
+    background-image: url("../images/noughts.png");
+    width: 80px;
+    height: 80px;
+    display: block;
+}
+
+.cross {
+    background-image: url("../images/cross.png");
+    width: 80px;
+    height: 80px;
+    display: block;
+}
