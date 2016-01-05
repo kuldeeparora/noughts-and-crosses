@@ -2,9 +2,11 @@
 <html xmlns:ng="http://angularjs.org" id="ng-app" ng-app="ox">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,minimum-scale=1">
-    <meta name="description" content="Noughts & Crosses">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
     <meta name="author" content="Kuldeep Arora">
+    <meta name="description" content="Noughts & Crosses">
+
     <title>Noughts & Crosses</title>
 
     {% block css %}
@@ -14,27 +16,44 @@
     <script src="{{ asset('/build/js/main_libs.js') }}"></script>
 
 </head>
-<body ng-controller="mainCtrl" >
-    <ul class="first-row">
-        <li><span class="noughts"></span></li>
-        <li><span class="cross"></span></li>
-        <li>3a</li>
-    </ul>
+<body ng-controller="mainCtrl">
 
-    <ul class="second-row">
-        <li>1b</li>
-        <li>2b</li>
-        <li>3b</li>
-    </ul>
+<div class="container">
+    <div class="row">
+        <div class="page-header">
+            <h3>Noughts & Crosses <small>Can play with multiple player</small></h3>
+        </div>
+        <div class="col-xs-12">
+            <div class="col-xs-5 col-xs-offset-4">
+                <ul class="first-row">
+                    <li><span class="noughts"></span></li>
+                    <li><span class="cross"></span></li>
+                    <li>3a</li>
+                </ul>
 
-    <ul class="third-row">
-        <li>1c</li>
-        <li>2c</li>
-        <li>3c</li>
-    </ul>
+                <ul class="second-row">
+                    <li>1b</li>
+                    <li>2b</li>
+                    <li>3b</li>
+                </ul>
+
+                <ul class="third-row">
+                    <li>1c</li>
+                    <li>2c</li>
+                    <li>3c</li>
+                </ul>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+
+{% verbatim %}
+{% endverbatim %}
 
 </body>
 
-<script src="/build/js/main_app.js"></script>
+<script src="{{ asset('/build/js/main_apps.js') }}"></script>
 
 </html>
