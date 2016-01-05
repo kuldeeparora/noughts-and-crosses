@@ -1,11 +1,11 @@
 <!DOCTYPE html>
-<html xmlns:ng="http://angularjs.org" id="ng-app" ng-app="ox">
+<html lang="en" id="ng-app" ng-app="oxGame">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     <meta name="author" content="Kuldeep Arora">
-    <meta name="description" content="Noughts & Crosses">
+    <meta name="description" content="Noughts & Crosses using Angular & Bootstrap">
 
     <title>Noughts & Crosses</title>
 
@@ -16,12 +16,18 @@
     <script src="{{ asset('/build/js/main_libs.js') }}"></script>
 
 </head>
-<body ng-controller="mainCtrl">
+<body ng-controller="oxController">
+
+{% verbatim %}
+    {{ test }}
+{% endverbatim %}
 
 <div class="container">
     <div class="row">
         <div class="page-header">
-            <h3>Noughts & Crosses <small>Can play with multiple player</small></h3>
+            <h3>Noughts & Crosses
+                <small>Can play with multiple player</small>
+            </h3>
         </div>
         <div class="col-xs-12">
             <div class="col-xs-5 col-xs-offset-4">
@@ -48,12 +54,8 @@
     </div>
 </div>
 
-
-{% verbatim %}
-{% endverbatim %}
-
 </body>
 
-<script src="{{ asset('/build/js/main_apps.js') }}"></script>
+<script src="{{ asset('/build/js/main_app.js') }}"></script>
 
 </html>

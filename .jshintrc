@@ -12,5 +12,8 @@
     "node": true,
     "white": true,
     "indent": 4,
-    "predef": [ "Ox", "angular", "$" ]
+    "globals": {
+      "Ox": true
+    },
+    "predef": [ "Ox", "Ox.game", "angular", "$" ]
 }
