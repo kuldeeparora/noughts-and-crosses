@@ -16,46 +16,109 @@
     <script src="{{ asset('/build/js/main_libs.js') }}"></script>
 
 </head>
-<body ng-controller="oxController">
+<body ng-controller="oxController" ng-model="gameContainer">
 
 {% verbatim %}
-    {{ test }}
-{% endverbatim %}
 
-<div class="container">
-    <div class="row">
-        <div class="page-header">
-            <h3>Noughts & Crosses
-                <small>Can play with multiple player</small>
-            </h3>
+<div ng-click="gameEnter()" ng-show="welcomeView">
+    <div class="logo"></div>
+    <div class="start">START GAME</div>
+</div>
+
+<div class="about" ng-show="welcomeView">
+
+    <div><b>About the Game</b>: Click "Start Game" to play a match. After a game is complete, look at past game boards to gain insight on your opponent's strategies or just play another game. It can also be played on two screens simultaneously so find a friend and enjoy!</div>
+
+    <div><b>About the Project</b>: This version of Tic Tac Toe was produced by <a href="http://www.nickmro.com" target="_blank">Nick Mrozowski</a> as his first project for General Assembly's <a href="https://generalassemb.ly/education/web-development-immersive" target="_blank">Web Development Immersive</a> program. It was built using AngularJS and Firebase.</div>
+
+    <div class="iconDiv"><a href="https://github.com/nickmro/Tic-Tac-Toe-Game" target="_blank"><i class="fa fa-github fa-2x"></i></a></div>
+
+</div>
+
+
+<div class="gameView" ng-show="gameView" >
+
+    <form class="player1Name" ng-class="{ playerTurn : currentPlayer.symbol == 'X' }">
+        <div class="playerSymbol">X</div>
+        <div class="nameDirections"><em>Click below to enter your name.</em></div>
+        <input type="text" ng-model="player1Name" class="nameInput" />
+    </form>
+
+    <form class="player2Name" ng-class="{ playerTurn : currentPlayer.symbol == 'O' }">
+        <div class="playerSymbol">O</div>
+        <div class="nameDirections"><em>Click below to enter your name.</em></div>
+        <input type="text" ng-model="player2Name" class="nameInput" />
+    </form>
+
+    <div class="gameboard" ng-class="{gameOver: gameOver}" ng-model="gameContainer">
+
+        <div ng-repeat="b in gameContainer.board.boxes" ng-click="b.clicked || gameOver || box(b)" ng-class="{tile : b.player == 2, player1 : b.player == 0, player2 : b.player == 1, clicked : b.clicked, noClick : gameOver, player1WinColor : b.colorMe == 'X', player2WinColor : b.colorMe == 'O'}">
+            <div class="symbol">{{b.symbol}}</div>
         </div>
-        <div class="col-xs-12">
-            <div class="col-xs-5 col-xs-offset-4">
-                <ul class="first-row">
-                    <li><span class="noughts"></span></li>
-                    <li><span class="cross"></span></li>
-                    <li>3a</li>
-                </ul>
 
-                <ul class="second-row">
-                    <li>1b</li>
-                    <li>2b</li>
-                    <li>3b</li>
-                </ul>
+    </div>
 
-                <ul class="third-row">
-                    <li>1c</li>
-                    <li>2c</li>
-                    <li>3c</li>
-                </ul>
+    <div class="win" ng-show="gameOver">
+        <div class="winStatement" ng-hide="tie">{{gameContainer.board.winner}} Wins!</div>
+        <div class="winStatement" ng-show="tie">Nobody Wins...</div>
+        <div class="buttonDiv">
+            <div ng-click="startOver()" class="buttonPress">Play Again</div>
+            <div>//</div>
+            <div ng-click="viewPastGames()" class="buttonPress">Past Games</div>
+        </div>
+    </div>
+
+    <div class="infoIcon">
+
+        <div ng-click="triggerInfoBox()"><i class="fa fa-info-circle fa-2x"></i></div>
+
+    </div>
+
+    <div class="infoBox" ng-show="infoBoxView" ng-class="{fadeInUp : infoBoxView}">
+
+        <div class="closeWindow" ng-click="infoBoxView = false">X</div>
+
+        <div class="infoBoxDiv"><i class="fa fa-info-circle fa-2x"></i></div>
+
+        <div class="infoBoxDiv"><b>About the Game</b>: Click "Start Game" to play a match. After a game is complete, look at past game boards to gain insight on your opponent's strategies or just play another game. It can also be played on two screens simultaneously so find a friend and enjoy!</div>
+
+        <div class="infoBoxDiv"><b>About the Project</b>: This version of Tic Tac Toe was produced by <a href="http://www.nickmro.com" target="_blank">Nick Mrozowski</a> as his first project for General Assembly's <a href="https://generalassemb.ly/education/web-development-immersive" target="_blank">Web Development Immersive</a> program. It was built using AngularJS and Firebase.</div>
+
+        <div class="iconDiv infoBoxDiv"><a href="https://github.com/nickmro/Tic-Tac-Toe-Game" target="_blank"><i class="fa fa-github fa-2x"></i></a></div>
+
+    </div>
+
+</div>
+
+<div class="pastGamesContainer" ng-show="pastView">
+    <div class="clearfix">
+        <div ng-repeat="p in pastGamesContainer.pastGames" class="gameStats">
+            <div class="miniBoard">
+                <div ng-repeat="b in p.board.boxes" ng-class="{miniTile : b.player == 2, player1Mini : b.player == 0, player2Mini : b.player == 1, clicked : b.clicked, noClick : gameOver, player1WinColor : b.colorMe == 'X', player2WinColor : b.colorMe == 'O'}">
+                    <div class="miniSymbol">{{b.symbol}}</div>
+                </div>
+            </div>
+            <div class="miniBoardText">
+                <div>Game {{$index + 1}}</div>
+                <div>Winner: {{p.board.winner}}</div>
 
             </div>
         </div>
     </div>
+    <div>
+        <div ng-click="startOver()" class="buttonPress">Play Again</div>
+    </div>
 </div>
+
+
+{% endverbatim %}
 
 </body>
 
 <script src="{{ asset('/build/js/main_app.js') }}"></script>
 
 </html>
+
+
+
+
